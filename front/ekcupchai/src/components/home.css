@@ -1,0 +1,71 @@
+/* Home Page Styling */
+.home-container {
+    background: linear-gradient(135deg, #DDEB9D, #A0C878);
+    color: #0d0377;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header */
+.home-header {
+    margin-bottom: 30px;
+}
+
+.home-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #EB5B00;
+}
+
+.home-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Content Cards */
+.home-content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.home-card {
+    background: rgb(17, 15, 129);
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.home-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Button */
+.home-button {
+    padding: 12px 24px;
+    margin: 1rem;
+    background-color: #EB5B00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.home-button:hover {
+    background-color: #c44700;
+    transform: scale(1.05);
+}
