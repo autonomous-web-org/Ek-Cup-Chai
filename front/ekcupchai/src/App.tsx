@@ -3,8 +3,7 @@ import "./App.css";
 import Nav from "./components/navbar";
 import Home from "./components/home";
 import GetStarted from "./components/get_started";
-import { motion } from "framer-motion";
-
+import { motion } from "framer-motion"
 function App() {
   // Function to scroll to a section based on ID
   const scrollToSection = (sectionId: string) => {
