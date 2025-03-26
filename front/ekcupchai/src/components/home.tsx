@@ -1,11 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom"; 
-import { useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom"; 
+// import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./home.css";
 
 const Home: React.FC = () => {
-    const navigate = useNavigate(); // For navigation
+    
+    const scrollToSection = (sectionId: string) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      };
+    
 
     return (
         <motion.div 
@@ -63,7 +70,7 @@ const Home: React.FC = () => {
                 className="home-button"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => navigate("/get-started")}
+                onClick={() => scrollToSection("get-started")}
             >
                 Get Started
             </motion.button>
@@ -72,9 +79,9 @@ const Home: React.FC = () => {
                 className="home-button"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => navigate("/")}
+                onClick={() => scrollToSection("landing")}
             >
-                Return to main page
+                Return Home
             </motion.button>
         </motion.div>
     );

@@ -3,6 +3,14 @@ import { Link } from "react-router-dom"; // Fixed incorrect import
 import { motion } from "framer-motion";
 import "./getstarted.css";
 
+const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+
 const GetStarted: React.FC = () => {
     const [formData, setFormData] = useState({ fullName: "", email: "", mobile: "" });
 
@@ -62,7 +70,7 @@ const GetStarted: React.FC = () => {
             </form>
             
             <p className="signup-footer">
-                Already have an account? <Link to="/home" className="signup-link">Go to Home</Link>
+                Already have an account? <Link to=' ' className="signup-link" onClick={() => scrollToSection("landing")}>Go to Home</Link>
             </p>
         </motion.div>
     );

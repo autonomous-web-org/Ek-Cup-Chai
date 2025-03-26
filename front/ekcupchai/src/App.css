@@ -4,11 +4,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
+    /* background: #ffffff; */
+    overflow: hidden;
 }
 
 /* App Container */
 .app-container {
     min-height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,9 +23,10 @@
     background: linear-gradient(135deg, #DDEB9D, #A0C878);
     color: #143D60;
     min-height: 100vh;
+    min-width: 100vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     text-align: center;
     padding: 20px;
