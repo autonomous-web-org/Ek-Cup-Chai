@@ -1,13 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import "tailwindcss";
+
 
 @theme {
     --color-primary: #7d583f;
     --color-secondary: #ffffff;
     --color-accent: #c38e6c;
+    --color-accent-light: #fff9ea;
+}
+
+.itim-regular {
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 
 :root {
     --primary: #7d583f;
     --secondary: #ffffff;
     --accent: #c38e6c;
+    --accent-light: #c38e6c;
+
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html, body {
+    block-size: 100vh;
+}
+
+#root {
+    block-size: 100%;
 }
