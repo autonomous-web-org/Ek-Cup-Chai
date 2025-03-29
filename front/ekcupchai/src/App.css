@@ -1,22 +1,6 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-.bg-day {
-    background: url("/image.png") no-repeat center center/cover;
-  }
-  
-  .bg-night {
-    background: url("/image copy.png") no-repeat center center/cover;
-  }
-   */
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /* 🌞 Day Theme */
 .bg-day {
   background: url("/image.png") no-repeat center center/cover;
@@ -25,6 +9,6 @@
 
 /* 🌙 Night Theme */
 .bg-night {
-  background: url("/image copy.png") no-repeat center center/cover;
+  background: url("/imagecopy.jpg") no-repeat center center/cover;
   transition: background 0.5s ease-in-out;
 }
