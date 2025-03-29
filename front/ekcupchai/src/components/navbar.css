@@ -4,14 +4,14 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
-    background: rgba(0, 0, 0, 0.7); /* Transparent black background */
+    width: 100%;
+    background: rgba(0, 0, 0, 0.0); /* Transparent black background */
     backdrop-filter: blur(10px); /* Glass effect */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 15px 0;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     z-index: 100;
     transition: background 0.3s ease-in-out;
   }
@@ -20,7 +20,7 @@
   .navbar ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 20px;
     padding: 0;
     margin: 0;
   }
@@ -28,7 +28,7 @@
   /* Navbar Items */
   .navbar ul li {
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
     transition: color 0.3s ease-in-out, transform 0.2s;
@@ -38,9 +38,12 @@
   
   /* Hover Effect */
   .navbar ul li:hover {
-    color: #ff6600;
+    color: #81ff7d;
     transform: scale(1.1);
-    background: rgba(255, 102, 0, 0.2);
+    background: rgba(255, 196, 0, 0.4);
+    border-radius: 30px;
+    text-shadow: 1px 1px  rgb(0, 0, 0)
+
   }
   
   /* Responsive Navbar */
