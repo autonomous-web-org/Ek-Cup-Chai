@@ -1,117 +1,71 @@
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom"; // Fixed incorrect import
-// import { motion } from "framer-motion";
-// import "./getstarted.css";
-
-// const scrollToSection = (sectionId: string) => {
-//     const section = document.getElementById(sectionId);
-//     if (section) {
-//       section.scrollIntoView({ behavior: "smooth" });
-//     }
-//   };
-
-
-// const GetStarted: React.FC = () => {
-//     const [formData, setFormData] = useState({ fullName: "", email: "", mobile: "" });
-
-//     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//         setFormData({ ...formData, [e.target.name]: e.target.value });
-//     };
-
-//     const handleSubmit = (e: React.FormEvent) => {
-//         e.preventDefault();
-//         alert("Sign-up successful!");
-//     };
-
-//     return (
-//         <motion.div 
-//             className="signup-container" 
-//             initial={{ opacity: 0, y: -50 }} 
-//             animate={{ opacity: 1, y: 0 }} 
-//             transition={{ duration: 0.5 }}
-//         >
-//             <h2 className="signup-title">Sign Up</h2>
-//             <form onSubmit={handleSubmit} className="signup-form">
-//                 <input 
-//                     type="text" 
-//                     name="fullName" 
-//                     placeholder="Full Name" 
-//                     value={formData.fullName} 
-//                     onChange={handleChange} 
-//                     className="signup-input"
-//                     required
-//                 />
-//                 <input 
-//                     type="email" 
-//                     name="email" 
-//                     placeholder="Email" 
-//                     value={formData.email} 
-//                     onChange={handleChange} 
-//                     className="signup-input"
-//                     required
-//                 />
-//                 <input 
-//                     type="tel" 
-//                     name="mobile" 
-//                     placeholder="Mobile Number" 
-//                     value={formData.mobile} 
-//                     onChange={handleChange} 
-//                     className="signup-input"
-//                     required
-//                 />
-//                 <motion.button 
-//                     type="submit" 
-//                     className="signup-button"
-//                     whileHover={{ scale: 1.05 }}
-//                     whileTap={{ scale: 0.95 }}
-//                 >
-//                     Sign Up
-//                 </motion.button>
-//             </form>
-            
-//             <p className="signup-footer">
-//                 Already have an account? <Link to=' ' className="signup-link" onClick={() => scrollToSection("landing")}>Go to Home</Link>
-//             </p>
-//         </motion.div>
-//     );
-// };
-
-// export default GetStarted;
-
-
-//===================================================2nd==================================
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+
+const desiPlaceholders = [
+  "Yeh chai kis liye hai? Thoda bata do ☺️",
+  "Kuch meetha bol do, jaise garam chai ke saath biscuit!",
+  "Chai ke saath ek do line ho jaaye?",
+  "Dil se likho, chai se jodo!",
+  "Kya yaad dilaa diya… kuch likhna chaahoge?",
+  "Bas ek pyaari si baat likh do ☕❤️",
+  "Tere jaise supporter mil jaaye… toh life set hai 😌",
+  "Tumhara pyaar chai ki har chuski mein mehsoos hota hai!",
+  "Ek garam chai ki pyali ho… aur ek pyara sa message ✨",
+  "Oye hoye! Thoda dil da haal vi likh jaa yaar 💖",
+  "Zara sa likh ke jaa, dil garden garden ho jaaye 🌸",
+  "Ek comment daal de, varna 'kitne supporter the' poochhna padega 😜",
+  "Tuzya shabdanmule chai la pan swad yeta ☕",
+  "Likha na kuch, toh kya likha? 😏"
+];
+
 
 const GetStarted = () => {
-  const [formData, setFormData] = useState({ fullName: "", email: "" });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Sign-up successful!");
-  };
 
   return (
-    <motion.div className="bg-white/10 p-10 rounded-lg shadow-xl backdrop-blur-md"
-      initial={{ opacity: 0, y: -50 }} 
-      animate={{ opacity: 1, y: 0 }} 
-      transition={{ duration: 0.5 }}
-    >
-      <h2 className="text-3xl font-bold text-white">Sign Up to Join the Chai Lovers! ☕</h2>
-      <form onSubmit={handleSubmit} className="mt-4">
-        <input type="text" name="fullName" placeholder="Full Name" onChange={handleChange} className="block w-full p-2 mb-4 rounded-md" required />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} className="block w-full p-2 mb-4 rounded-md" required />
-        <motion.button type="submit" className="bg-[#EB5B00] text-white py-2 px-4 rounded-md"
-          whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-        >
-          Sign Up
-        </motion.button>
-      </form>
-    </motion.div>
+    <div className="w-full h-screen grid grid-cols-2 items-center justify-items-center">
+      <div className="flex flex-col gap-6 items-start w-1/2 text-xl text-secondary">
+        <picture></picture>
+        <label className="w-full">
+          <span className="text-accent opacity-0">UPI ID</span>
+          <input type="text" placeholder="UPI ID here"
+          className="resize-none rounded-md p-2 px-3 w-full outline-none
+          bg-accent placeholder:!text-secondary" />
+        </label>
+        <div className="w-full space-y-2">
+          <section className="px-3 flex gap-3 items-center w-full bg-accent rounded-md">
+            <span>₹</span>
+            <input type="number" placeholder="Amount" min={1}
+              className="resize-none rounded-md p-2 w-full placeholder:!text-secondary
+            bg-accent outline-none " />
+          </section>
+          <section className="flex gap-2 text-center">
+            <button className="!bg-accent p-2 w-full rounded-md
+               hover:!bg-accent-light hover:!text-accent transition">
+              ₹6
+            </button>
+            <button className="!bg-accent p-2 w-full rounded-md
+               hover:!bg-accent-light hover:!text-accent transition">
+              ₹18
+            </button>
+            <button className="!bg-accent p-2 w-full rounded-md
+               hover:!bg-accent-light hover:!text-accent transition">
+              ₹30
+            </button>
+          </section>
+        </div>
+        <textarea placeholder={desiPlaceholders[Math.floor(Math.random() * desiPlaceholders.length)]}
+          className="resize-none border-2 !border-secondary rounded-md p-2 px-3 w-full
+          min-h-[150px] bg-accent placeholder:!text-secondary outline-none">
+        </textarea>
+        <button disabled className="disabled:opacity-50 disabled:cursor-not-allowed
+         hidden md:initial p-3 !bg-primary text-white rounded-md w-full">
+          Preview
+        </button>
+      </div>
+      <div className="bg-accent w-full h-full">
+        asf
+      </div>
+    </div>
   );
 };
 
