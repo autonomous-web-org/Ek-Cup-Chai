@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import ChaiCup from "/public/chai.png";
+import ChaiCup from "/src/assets/chai.png";
 
 const Home = () => {
     return (

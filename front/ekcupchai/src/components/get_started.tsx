@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import QRCodeStyling from "qr-code-styling";
 
 const desiPlaceholders = [
   "Yeh chai kis liye hai? Thoda bata do ☺️",
@@ -18,39 +19,70 @@ const desiPlaceholders = [
 ];
 
 
-const GetStarted = () => {
+const qrCode = new QRCodeStyling({
+  width: 300,
+  height: 300,
+  // image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+  dotsOptions: {
+    color: "#7d583f",
+    type: "square"
+  },
+  backgroundOptions: {
+    color: "#fff9ea"
+  },
+  imageOptions: {
+    crossOrigin: "anonymous",
+    margin: 0
+  },
+  data: "https://google.com/"
+});
 
+const presetAmount = [6, 18, 30];
+
+const GetStarted = () => {
+  const [upiId, setUpiId] = useState("");
+  const [amount, setAmount] = useState(0);
+
+  const qrCodeRef = useRef<any>(null);
+
+  useEffect(() => {
+    qrCode.append(qrCodeRef.current);
+  }, []);
+
+  useEffect(() => {
+    if (upiId.length < 3) return () => {};
+    qrCode.update({
+      data: `upi://pay?pa=${upiId}&am=${amount}&cu=INR`
+      // &pn=ekcupchai
+    });
+  }, [upiId, amount]);
 
   return (
     <div className="w-full h-screen grid grid-cols-2 items-center justify-items-center">
-      <div className="flex flex-col gap-6 items-start w-1/2 text-xl text-secondary">
+      <div className="flex flex-col gap-6 items-center w-1/2 text-xl text-secondary">
         <picture></picture>
         <label className="w-full">
           <span className="text-accent opacity-0">UPI ID</span>
-          <input type="text" placeholder="UPI ID here"
+          <input type="text" placeholder="UPI ID here" onChange={(e)=>{setUpiId(e.currentTarget.value)}}
           className="resize-none rounded-md p-2 px-3 w-full outline-none
           bg-accent placeholder:!text-secondary" />
         </label>
         <div className="w-full space-y-2">
           <section className="px-3 flex gap-3 items-center w-full bg-accent rounded-md">
             <span>₹</span>
-            <input type="number" placeholder="Amount" min={1}
+            <input type="number" placeholder="Amount" min={1} value={amount ?? 0} onChange={(e)=>{setAmount(parseInt(e.currentTarget.value))}}
               className="resize-none rounded-md p-2 w-full placeholder:!text-secondary
             bg-accent outline-none " />
           </section>
           <section className="flex gap-2 text-center">
-            <button className="!bg-accent p-2 w-full rounded-md
+            {
+              presetAmount.map(z => 
+                <button key={z} onClick={()=>{setAmount(z)}} className="!bg-accent p-2 w-full rounded-md
                hover:!bg-accent-light hover:!text-accent transition">
-              ₹6
-            </button>
-            <button className="!bg-accent p-2 w-full rounded-md
-               hover:!bg-accent-light hover:!text-accent transition">
-              ₹18
-            </button>
-            <button className="!bg-accent p-2 w-full rounded-md
-               hover:!bg-accent-light hover:!text-accent transition">
-              ₹30
-            </button>
+                  ₹{z}
+                </button>
+              )
+            }
           </section>
         </div>
         <textarea placeholder={desiPlaceholders[Math.floor(Math.random() * desiPlaceholders.length)]}
@@ -62,8 +94,7 @@ const GetStarted = () => {
           Preview
         </button>
       </div>
-      <div className="bg-accent w-full h-full">
-        asf
+      <div className="bg-accent w-full h-full grid place-items-center"  ref={qrCodeRef}>
       </div>
     </div>
   );
