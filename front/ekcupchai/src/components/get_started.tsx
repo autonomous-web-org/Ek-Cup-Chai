@@ -60,7 +60,9 @@ const GetStarted = () => {
   return (
     <div className="w-full h-screen grid grid-cols-2 items-center justify-items-center">
       <div className="flex flex-col gap-6 items-center w-1/2 text-xl text-secondary">
-        <picture></picture>
+        <picture>
+          
+        </picture>
         <label className="w-full">
           <span className="text-accent opacity-0">UPI ID</span>
           <input type="text" placeholder="UPI ID here" onChange={(e)=>{setUpiId(e.currentTarget.value)}}

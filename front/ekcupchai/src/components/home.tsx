@@ -1,67 +1,103 @@
-import { Link } from "react-router";
+import { useMemo } from 'react';
+// import { Link } from "react-router";
 
-import ChaiCup from "/src/assets/chai.png";
+import Biscuit from "/src/assets/biscuit_nb.png";
+import Rusk from "/src/assets/rusk_nb.png";
+import Samosa from "/src/assets/samosa_nb.png";
+import Fan from "/src/assets/fan_nb.png";
+// import ChaiCup from "/src/assets/chai.png";
 
-const Home = () => {
-    return (
-        <>
-            {/* hero/landing seciton */}
-            <div className="w-full grid place-items-center content-center h-screen">
-                <Link to={"/get-started"} className="w-1/3">
-                    <img src={ChaiCup} alt="ek cup chai" />
-                </Link>
-                <p className="text-3xl text-accent">Let's talk, sip, and grow together over a warm cup of tea.</p>
-            </div>
 
-            {/* how it works */}
-            <div className="w-full h-screen flex items-center justify-evenly"
-            >
-                <section className="flex flex-col gap-9">
-                    <h2 className="text-6xl text-primary">How it works ?</h2>
-                    <ol className="text-3xl list-none text-accent space-y-3">
-                        <li>
-                            ~ Navigate to
-                            <Link to={"/get-started"} className="ml-1 underline underline-offset-2">
-                                Get Started
-                            </Link>
-                        </li>
-                        <li>~ Provide your UPI details</li>
-                        <li>~ Select an amount and design</li>
-                        <li>~ Lastly, Click on "Generate"</li>
-                    </ol>
-                </section>
-                <Link to={"/get-started"} className="w-1/3 row-start-1 row-end-3 col-start-2">
-                    <img src={ChaiCup} alt="ek cup chai" />
-                </Link>
-            </div>
 
-            {/* FAQs */}
-            <div className="w-full h-screen flex items-center justify-evenly"
-            >
-                <Link to={"/get-started"} className="w-1/3 row-start-1 row-end-3 col-start-2">
-                    <img src={ChaiCup} alt="ek cup chai" />
-                </Link>
-                <section className="flex flex-col gap-12">
-                    <h2 className="text-6xl text-primary">Having Doubts ?</h2>
-                    <ol className="text-3xl list-none text-accent space-y-6">
-                        <li className="flex flex-col">
-                            <span>Is my personal data being shared?</span>
-                            <span className="opacity-50">no.</span>
-                        </li>
-                        <li className="flex flex-col">
-                            <span>How long will this QR work?</span>
-                            <span className="opacity-50">As long as you need it.</span>
-                        </li>
-                        <li className="flex flex-col">
-                            <span>Can someone hack my bank with this?</span>
-                            <span className="opacity-50">no.</span>
-                        </li>
-                    </ol>
-                </section>
-                
-            </div>
-        </>
-    );
+// Default number of decorations per side
+const DEFAULT_LEFT_COUNT = 3;
+const DEFAULT_RIGHT_COUNT = 3;
+
+/**
+ * Home component renders a hero section with decorative images
+ * on the left and right sides, randomly positioned and rotated.
+ *
+ * Props:
+ * - leftImages: array of image imports for left side
+ * - rightImages: array of image imports for right side
+ * - leftCount: number of images to render on left
+ * - rightCount: number of images to render on right
+ */
+const Home = ({
+  leftImages = [Rusk, Fan, Samosa],
+  rightImages = [Fan, Rusk, Biscuit],
+  leftCount = DEFAULT_LEFT_COUNT,
+  rightCount = DEFAULT_RIGHT_COUNT,
+}) => {
+  // Prepare decoration data once per mount
+  const decorations = useMemo(() => {
+    // Fisher-Yates shuffle
+    const shuffleArray = (arr: any) => {
+        const array = [...arr];
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      };
+  
+    const fillAndDecorate = (images: any[], count: number) => {
+        const shuffled = shuffleArray(images);
+      // Cycle through provided images to fill the count
+      const filled = Array.from({ length: count }, (_, i) => shuffled[i % shuffled.length]);
+      // Assign random top positions and rotations
+      return filled.map(src => ({
+        src,
+        top: Math.random() * (window.innerHeight/100)-6,           // between 0% and 60%
+        rotate: Math.random() * 60 - 30,   // between -30° and +30°
+      }));
+    };
+    return {
+      left: fillAndDecorate(leftImages, leftCount),
+      right: fillAndDecorate(rightImages, rightCount),
+    };
+  }, [leftImages, rightImages, leftCount, rightCount]);
+
+  return (
+    <div className="relative w-full h-screen overflow-hidden flex flex-col items-center gap-6 py-[30vh]">
+      {/* Left-side decorations */}
+      {decorations.left.map((d, idx) => (
+        <img
+          key={`left-${idx}`}
+          src={d.src}
+          alt=""
+          className="absolute left-0 transform"
+          style={{
+            top: `${d.top}%`,
+            transform: `translateX(-39%) rotate(${d.rotate}deg)`,
+          }}
+        />
+      ))}
+
+      {/* Right-side decorations */}
+      {decorations.right.map((d, idx) => (
+        <img
+          key={`right-${idx}`}
+          src={d.src}
+          alt=""
+          className="absolute right-0 transform"
+          style={{
+            top: ((window.innerHeight < window.innerWidth) ? `${d.top}%` : `${d.top+50}%`),
+            transform: `translateX(39%) rotate(${d.rotate}deg)`,
+          }}
+        />
+      ))}
+
+      {/* Hero text */}
+      <strong className="text-3xl text-primary text-center z-10 home-page-text" >
+        Let's talk, Share, sip, and grow together over a warm cup of tea.
+      </strong>
+      {/* <section className='space-x-6  text-xl'>
+        <button className='!bg-accent p-3 px-6 !text-secondary rounded-lg'>Customize QR</button>
+        <Link to={'socialize'} className='underline underline-offset-1 !text-primary'>Socialize</Link>
+      </section> */}
+    </div>
+  );
 };
 
 export default Home;

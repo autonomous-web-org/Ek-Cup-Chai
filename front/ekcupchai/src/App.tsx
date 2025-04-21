@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router";
 
 import Home from "./components/home";
-import GetStarted from "./components/get_started";
 
 import "./App.css"; // Ensure Tailwind is working
 import RootLayout from "./components/layouts";
@@ -13,8 +12,8 @@ const App = () => {
         <Routes>
           <Route element={<RootLayout />}>
             <Route index element={<Home />} />
-            <Route path="/get-started" element={<><GetStarted /></>} />
-            <Route path="*" element={<>no chai here</>} />
+            {/* <Route path="/qr" element={<><QRCustomize /></>} /> */}
+            <Route path="*" element={<div className="grid place-items-center h-full text-3xl">no chai here</div>} />
           </Route>
         </Routes>
     );

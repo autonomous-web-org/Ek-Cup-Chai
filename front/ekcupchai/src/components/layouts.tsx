@@ -3,6 +3,8 @@ import { Outlet } from 'react-router';
 import { twMerge } from "tailwind-merge";
 
 // global components
+import Navbar from './navbar';
+import QRCustomize from "./qr_customize";
 
 //const inter = Inter({ subsets: ['latin'] });
 
@@ -11,7 +13,9 @@ import { twMerge } from "tailwind-merge";
 export default function RootLayout() {
   return (
     <>
-      <main className={twMerge(`w-full bg-accent-light`)}>
+      <Navbar />
+      <QRCustomize />
+      <main className={twMerge(`w-full h-[90%] bg-secondary`)}>
         <Outlet />
       </main>
     </>
