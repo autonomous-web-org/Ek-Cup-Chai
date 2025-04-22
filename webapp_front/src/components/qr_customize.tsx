@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import QRCodeStyling from "qr-code-styling";
-import { PiArrowCircleLeftThin, PiArrowCircleRightThin } from "react-icons/pi";
+// import { PiArrowCircleLeftThin, PiArrowCircleRightThin } from "react-icons/pi";
 
 import { useModalStore } from "../stores/useModalStore";
 
