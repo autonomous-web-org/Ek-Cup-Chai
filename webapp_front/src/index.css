@@ -30,6 +30,10 @@ html, body {
     block-size: 100vh;
 }
 
+button {
+    cursor: pointer;
+}
+
 #root {
     block-size: 100%;
     overflow: hidden;

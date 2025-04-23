@@ -54,7 +54,6 @@ const QRCustomize = () => {
     const modal = useModalStore();
 
     useEffect(() => {
-        console.log(qrCode)
         qrCode.append(qrCodeRef.current);
     }, [modal.isOpen]);
 
