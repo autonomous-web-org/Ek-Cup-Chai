@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router";
 
 import Home from "./components/home";
-import Social from "./components/social"
+import Social from "./components/socializing/social"
 
 import "./App.css"; // Ensure Tailwind is working
 import RootLayout from "./components/layouts";
