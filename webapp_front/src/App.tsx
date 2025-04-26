@@ -1,10 +1,12 @@
 import { Routes, Route } from "react-router";
 
-import Home from "./components/home";
-import Social from "./components/socializing/social"
-
 import "./App.css"; // Ensure Tailwind is working
-import RootLayout from "./components/layouts";
+
+import RootLayout from "./_components/layouts";
+
+import Home from "./_components/home";
+import Social from "./_components/socializing"
+
 
 
 const App = () => {
