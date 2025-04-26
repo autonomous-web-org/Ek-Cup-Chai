@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@tailwindcss/vite": "^4.0.17",
+    "firebase": "^11.6.1",
     "framer-motion": "^12.5.0",
     "qr-code-styling": "^1.9.2",
     "react": "^19.0.0",
