@@ -26,7 +26,7 @@ const Navbar = () => {
           </button>
 
           <Link
-            to="./index"
+            to="/social"
             className={twMerge("navs", "text-2xl")}
           >
             Socialize
