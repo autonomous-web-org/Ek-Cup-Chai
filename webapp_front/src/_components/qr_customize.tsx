@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import QRCodeStyling from "qr-code-styling";
 // import { PiArrowCircleLeftThin, PiArrowCircleRightThin } from "react-icons/pi";
 
-import { useModalStore } from "../_stores/useModalStore";
+import { useModalStore } from "../_stores/use_modal_store";
 
 const desiPlaceholders = [
     "Yeh chai kis liye hai? Thoda bata do ☺️",

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { signInWithGoogle, storeEmailOnly } from "../../_libs/firebase";
 
-import { useAuthStore } from "../../_stores/useAuthStore"; // ✅ Only add this
-
 
 const Auth = () => {
   // Setup navigation (to move to different pages like /home)
@@ -17,9 +15,6 @@ const Auth = () => {
   const [loading, setLoading] = useState(false); // To show loading spinner
   const [formSubmitted, setFormSubmitted] = useState(false); // To animate form on submission
 
-  const setLoggedIn = useAuthStore((state) => state.setLoggedIn); // ✅ Only add this
-
-
 
   const handleGoogleSignIn = async () => {
     setLoading(true); // Start loading
@@ -27,7 +22,6 @@ const Auth = () => {
     setLoading(false); // Stop loading after result
 
     if (user) {
-      setLoggedIn(true); // ✅ Set login state to true
 
       console.log("🎉 Welcome,", user.displayName);
       navigate("explore"); // Redirect after successful Google login
@@ -48,7 +42,6 @@ const Auth = () => {
     setLoading(false); // Stop loading after saving
 
     if (success) {
-      setLoggedIn(true); // ✅ Add this line
       console.log("✅ Email saved:", email);
       setFormSubmitted(true); // Trigger form animation
       setTimeout(() => {
