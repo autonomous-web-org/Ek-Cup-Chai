@@ -1,23 +1,34 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
+import { getAuth, signOut } from "firebase/auth";
 
 import { useModalStore } from "../_stores/use_modal_store";
 import { useAuthDataStore } from "../_stores/user_auth_data";
 
 const Navbar = () => {
-  const signInData = useAuthDataStore(state => state.signInData);
-  
+  const { signInData, clearSignInData } = useAuthDataStore();
   const modal = useModalStore();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const auth = getAuth();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);            // Firebase sign out
+      clearSignInData();              // Clear Zustand auth state
+      navigate("/goodbye");           // Redirect to goodbye page
+    } catch (error) {
+      console.error("Logout error:", error);
+      alert("Failed to log out. Please try again.");
+    }
+  };
 
   return (
     <nav className="flex justify-between items-center w-full backdrop-blur-md h-[10%] p-3 max-w-[1440px] mx-auto text-xl text-primary">
-      {/* Logo */}
       <h1 className={twMerge("navs", "text-3xl")}>
         <Link to="/">☕ Ek Cup Chai</Link>
       </h1>
 
-      {/* Conditionally render sections based on path */}
       {!pathname.startsWith("/socialize") || !signInData ? (
         <section className="flex items-center space-x-9 text-lg font-medium">
           <button
@@ -35,7 +46,10 @@ const Navbar = () => {
         </section>
       ) : (
         <section className="flex items-center space-x-9 text-lg font-medium">
-          <button className={twMerge("navs", "text-2xl")}>
+          <button
+            onClick={handleLogout}
+            className={twMerge("navs", "text-2xl text-red-500")}
+          >
             Logout
           </button>
         </section>

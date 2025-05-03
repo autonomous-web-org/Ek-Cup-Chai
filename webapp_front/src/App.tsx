@@ -11,11 +11,9 @@ import RootLayout from "./_components/layouts";
 import Home from "./_components/home";
 import Auth from "./_components/socializing";
 import Explore from "./_components/socializing/explore";
-import Goodbye from "./_components/goodbye";
+import Goodbye from "./_components/Goodbye";
 
 import { useAuthDataStore } from "./_stores/user_auth_data";
-
-
 
 
 
