@@ -4,15 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { signInWithGoogle, storeEmailOnly } from "../../_libs/firebase";
 
 
-
 const Auth = () => {
   // Setup navigation (to move to different pages like /home)
   const navigate = useNavigate();
+  
 
   // State variables
+
   const [email, setEmail] = useState(""); // To store user's email input
   const [loading, setLoading] = useState(false); // To show loading spinner
   const [formSubmitted, setFormSubmitted] = useState(false); // To animate form on submission
+
 
   const handleGoogleSignIn = async () => {
     setLoading(true); // Start loading
@@ -20,6 +22,7 @@ const Auth = () => {
     setLoading(false); // Stop loading after result
 
     if (user) {
+
       console.log("🎉 Welcome,", user.displayName);
       navigate("explore"); // Redirect after successful Google login
     }

@@ -52,3 +52,5 @@ export const storeEmailOnly = async (email: string) => {
     return false;
   }
 };
+
+export { auth };
