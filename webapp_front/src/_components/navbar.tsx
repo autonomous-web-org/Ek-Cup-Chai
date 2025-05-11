@@ -1,32 +1,66 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
+import { Menu as MenuIcon, User, Globe, Gamepad, QrCode, LogOut } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+
+import { auth } from "../_libs/firebase";
 
 import { useModalStore } from "../_stores/use_modal_store";
 import { useAuthDataStore } from "../_stores/user_auth_data";
 
+import ChaiLogo from "../assets/chai_nb.png";
+
 const Navbar = () => {
   const { signInData, clearSignInData } = useAuthDataStore();
   const modal = useModalStore();
+
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const auth = getAuth();
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // close menu on outside click
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, []);
 
   const handleLogout = async () => {
-    try {
-      await signOut(auth);            // Firebase sign out
-      clearSignInData();              // Clear Zustand auth state
-      navigate("/goodbye");           // Redirect to goodbye page
-    } catch (error) {
-      console.error("Logout error:", error);
-      alert("Failed to log out. Please try again.");
-    }
+    await signOut(auth);
+    clearSignInData();
+    navigate("/goodbye");
   };
 
+  // define your menu items
+  const items = [
+    // { id: "profile", icon: User, to: "/socialize/profile", color: 'text-primary' },
+    { id: "explore", icon: Globe, to: "/socialize/explore", color: 'text-primary' },
+    { id: "games",   icon: Gamepad, to: "/socialize/games", color: 'text-primary' },
+    {
+      id: "qr",
+      icon: QrCode,
+      onClick: () => {
+        modal.toggle();
+        setMenuOpen(false);
+      },
+    },
+    { id: "logout", icon: LogOut, onClick: handleLogout, color: "text-red-500" },
+  ];
+
   return (
-    <nav className="flex justify-between items-center w-full backdrop-blur-md h-[10%] p-3 max-w-[1440px] mx-auto text-xl text-primary">
+    <nav className="relative flex justify-between items-center w-full h-[10%] p-3 max-w-[1440px] mx-auto text-primary">
       <h1 className={twMerge("navs", "text-3xl")}>
-        <Link to="/">☕ Ek Cup Chai</Link>
+        <Link to="/" className="flex items-center">
+          {/* <img src={ChaiLogo} className="w-[3%]" /> */}
+          Ek Cup Chai
+        </Link>
       </h1>
 
       {!pathname.startsWith("/socialize") || !signInData ? (
@@ -45,14 +79,63 @@ const Navbar = () => {
           </Link>
         </section>
       ) : (
-        <section className="flex items-center space-x-9 text-lg font-medium">
+        <div className="relative" ref={menuRef}>
+          {/* Hamburger */}
           <button
-            onClick={handleLogout}
-            className={twMerge("navs", "text-2xl text-red-500")}
+            onClick={() => setMenuOpen((o) => !o)}
+            className="navs"
+            aria-label="Open menu"
           >
-            Logout
+            <MenuIcon />
           </button>
-        </section>
+
+          {/* Icon‐only menu */}
+          <div className="absolute flex flex-col items-center space-y-3 translate-x-half left-1/2 top-[300%]">
+            {items.map((item, idx) => {
+              const Icon = item.icon;
+              const delayMs = idx * 80;
+
+              const baseClasses =
+                "w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 ease-[cubic-bezier(.68,-0.55,.265,1.55)]";
+              const stateClasses = menuOpen
+                ? "opacity-100 scale-100 pointer-events-auto"
+                : "opacity-0 scale-75 pointer-events-none";
+              const activeClasses = "bg-primary";
+
+              const style = { transitionDelay: `${delayMs}ms` };
+
+              if (item.to) {
+                if (pathname == item.to) {
+                  item.color = "text-accent-light";
+                }
+
+                return (
+                  <Link
+                    title={item.id}
+                    to={item.to}
+                    key={item.id}
+                    className={twMerge(baseClasses, stateClasses, (pathname == item.to) && activeClasses)}
+                    style={style}
+                  >
+                    <Icon className={item.color ?? "text-primary"} size={20} />
+                  </Link>
+                );
+              } else {
+                return (
+                  <button
+                    key={item.id}
+                    title={item.id}
+                    onClick={item.onClick}
+                    className={twMerge(baseClasses, stateClasses)}
+                    style={style}
+                  >
+                    <Icon className={item.color ?? "text-primary"} size={20} />
+                  </button>
+                );
+              }
+            })}
+          </div>
+        </div>
       )}
     </nav>
   );
