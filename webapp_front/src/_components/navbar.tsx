@@ -1,15 +1,13 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 import { signOut } from "firebase/auth";
-import { Menu as MenuIcon, User, Globe, Gamepad, QrCode, LogOut } from "lucide-react";
+import { Menu as MenuIcon, Globe, Gamepad, QrCode, LogOut } from "lucide-react"; //User
 import { useState, useRef, useEffect } from "react";
 
 import { auth } from "../_libs/firebase";
 
 import { useModalStore } from "../_stores/use_modal_store";
 import { useAuthDataStore } from "../_stores/user_auth_data";
-
-import ChaiLogo from "../assets/chai_nb.png";
 
 const Navbar = () => {
   const { signInData, clearSignInData } = useAuthDataStore();
