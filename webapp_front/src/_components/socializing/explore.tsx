@@ -28,8 +28,6 @@ const items: {
   },
 ];
 
-const CARD_WIDTH = 470;
-const CARD_HEIGHT = 630;
 
 function Explore(): JSX.Element {
   const [active, setActive] = useState<number>(0);
@@ -124,7 +122,7 @@ function Explore(): JSX.Element {
           return (
             <motion.div
               key={idx}
-              className={`absolute left-1/2 top-1/2 w-[${CARD_WIDTH}px] h-[${CARD_HEIGHT}px] -translate-x-1/2 -translate-y-1/2
+              className={`absolute left-1/2 top-1/2 w-[470px] h-[630px] -translate-x-1/2 -translate-y-1/2
                rounded-2xl bg-accent-light shadow-xl overflow-hidden flex items-center justify-center transition-all duration-300`}
               {...cardProps(idx)}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
