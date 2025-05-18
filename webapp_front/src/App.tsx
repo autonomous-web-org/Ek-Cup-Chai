@@ -4,13 +4,13 @@ import { onAuthStateChanged, type User } from 'firebase/auth';
 
 import "./App.css"; // Ensure Tailwind is working
 
+
 import { auth } from './_libs/firebase';
 
 import RootLayout from "./_components/layouts";
 
 import Home from "./_components/home";
-import Auth from "./_components/socializing";
-import Explore from "./_components/socializing/explore";
+import { Auth, Explore } from "./_components/socializing";
 import Goodbye from "./_components/goodbye";
 
 import { useAuthDataStore } from "./_stores/user_auth_data";
@@ -45,9 +45,9 @@ const App = () => {
               :
               <>
                 <Route path="/socialize" element={<Auth />} />
-                <Route path="/goodbye" element={<Goodbye />} />
               </>
             }
+            <Route path="/goodbye" element={<Goodbye />} />
             {/* <Route path="/qr" element={<><QRCustomize /></>} /> */}
             <Route path="*" element={<div className="grid place-items-center h-full text-3xl">no chai here</div>} />
           </Route>
