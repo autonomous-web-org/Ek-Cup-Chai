@@ -44,7 +44,7 @@ function Explore(): JSX.Element {
   
   // State for our items + views
   const [items, setItems] = useState<Item[]>(DEMO_ITEMS);
-  const [views, setViews] = useState<number[]>(DEMO_ITEMS.map(() => 0));
+  // const [views, setViews] = useState<number[]>(DEMO_ITEMS.map(() => 0));
 
   // carousel state
   const [active, setActive] = useState(0);
@@ -78,7 +78,7 @@ function Explore(): JSX.Element {
 
         if (cloudItems.length > 0) {
           setItems(cloudItems);
-          setViews(cloudItems.map(() => 0));
+          // setViews(cloudItems.map(() => 0));
         }
       } catch (e) {
         console.error("Failed to load Cloudinary items:", e);
@@ -97,13 +97,13 @@ function Explore(): JSX.Element {
   }, []);
 
   // increment view count on slide
-  useEffect(() => {
-    setViews((prev) => {
-      const next = [...prev];
-      next[active] = (next[active] || 0) + 1;
-      return next;
-    });
-  }, [active]);
+  // useEffect(() => {
+  //   setViews((prev) => {
+  //     const next = [...prev];
+  //     next[active] = (next[active] || 0) + 1;
+  //     return next;
+  //   });
+  // }, [active]);
 
   // const handleReport = (idx: number) => {
   //   alert(`Reported: ${items[idx].alt}`);
