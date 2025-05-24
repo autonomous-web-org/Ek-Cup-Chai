@@ -69,7 +69,7 @@ function Explore(): JSX.Element {
                 else if (r.format === "gif") type = "gif";
                 return {
                     type,
-                    src: `https://res.cloudinary.com/dboaamz4a/image/upload/v1748100238/${r.public_id}.png`,        // always use the secure_url
+                    src: `https://res.cloudinary.com/dboaamz4a/${r.resource_type}/upload/v1748100238/${r.public_id}.${r.format}`,        // always use the secure_url
                     alt: r.public_id,
                     views: 0,
                 };
