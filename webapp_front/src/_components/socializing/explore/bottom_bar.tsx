@@ -9,6 +9,7 @@ import ModalOveraly from "../../modal_overlay";
 interface BottomBarProps {
   // views: number;
   // onReport: () => void;
+  refetch: () => void;
   onShare: () => void;
 }
 
@@ -19,6 +20,7 @@ const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 const BottomBar = ({
   // views,
   // onReport,
+  refetch,
   onShare,
 }: BottomBarProps): JSX.Element => {
   const [open, setOpen] = useState(false);
@@ -47,7 +49,8 @@ const BottomBar = ({
       );
       const body = await res.json();
       if (body.error) throw new Error(body.error.message);
-      alert("Uploaded to: " + body.secure_url);
+      // alert("Uploaded to: " + body.secure_url);
+      refetch();
       setShowDropZone(false);
     } catch (e: any) {
       console.error(e);
