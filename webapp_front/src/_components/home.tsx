@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 // import { Link } from "react-router";
-import { motion } from 'framer-motion';
 
 import Biscuit from "/src/assets/home/biscuit_nb.png";
 import Rusk from "/src/assets/home/rusk_nb.png";
