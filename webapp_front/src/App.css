@@ -27,12 +27,6 @@
 }
 
 
-.qr-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 .navs {
   transition: 0.3s ease;

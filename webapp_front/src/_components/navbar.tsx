@@ -53,7 +53,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="relative flex justify-between items-center w-full h-[10%] p-3 max-w-[1440px] mx-auto text-primary">
+    <nav className="relative flex justify-between items-center w-full h-[10%] p-3 px-6 max-w-[1440px] mx-auto text-primary">
       <h1 className={twMerge("navs", "text-3xl")}>
         <Link to="/" className="flex items-center">
           {/* <img src={ChaiLogo} className="w-[3%]" /> */}
@@ -88,13 +88,14 @@ const Navbar = () => {
           </button>
 
           {/* Icon‐only menu */}
-          <div className="absolute flex flex-col items-center space-y-3 translate-x-half left-1/2 top-[300%]">
+          <div className="absolute flex flex-col items-center space-y-6 translate-x-half left-1/2 top-[270%] z-10">
             {items.map((item, idx) => {
               const Icon = item.icon;
               const delayMs = idx * 80;
 
               const baseClasses =
-                "w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 ease-[cubic-bezier(.68,-0.55,.265,1.55)]";
+                `w-10 h-10 flex items-center justify-center border rounded-full transition-all
+                duration-300 ease-[cubic-bezier(.68,-0.55,.265,1.55)] bg-secondary `;
               const stateClasses = menuOpen
                 ? "opacity-100 scale-100 pointer-events-auto"
                 : "opacity-0 scale-75 pointer-events-none";

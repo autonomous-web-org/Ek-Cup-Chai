@@ -3,6 +3,7 @@ import QRCodeStyling from "qr-code-styling";
 // import { PiArrowCircleLeftThin, PiArrowCircleRightThin } from "react-icons/pi";
 
 import { useModalStore } from "../_stores/use_modal_store";
+import ModalOveraly from "./modal_overlay";
 
 const desiPlaceholders = [
     "Yeh chai kis liye hai? Thoda bata do ☺️",
@@ -68,7 +69,7 @@ const QRCustomize = () => {
     if (!modal.isOpen) return null;
 
     return (
-        <div className="qr-modal grid place-items-center w-full h-full bg-secondary/60 backdrop-blur-xl z-50" onClick={() => { modal.close()}}>
+        <ModalOveraly closeModal={() => { modal.close()}}>
             <div className="min-w-[300px] min-h-[600px] w-1/3 h-auto bg-accent-light p-9 py-21 rounded-xl
             flex flex-col gap-6 items-center text-xl text-primary " onClick={(event) => {event.stopPropagation();}}>
                 <div className="flex items-center gap-6">
@@ -109,7 +110,7 @@ const QRCustomize = () => {
                     Preview
                 </button>
             </div>
-        </div>
+        </ModalOveraly>
     );
 };
 

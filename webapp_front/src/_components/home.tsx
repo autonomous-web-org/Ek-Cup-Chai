@@ -25,7 +25,7 @@ const DEFAULT_RIGHT_COUNT = 3;
  */
 const Home = ({
   leftImages = [Rusk, Fan, Samosa],
-  rightImages = [Fan, Rusk, Biscuit],
+  rightImages = [Fan, Samosa, Biscuit],
   leftCount = DEFAULT_LEFT_COUNT,
   rightCount = DEFAULT_RIGHT_COUNT,
 }) => {
@@ -72,9 +72,13 @@ const Home = ({
           src={d.src}
           alt=""
           className="absolute left-0 transform"
+          
+          // initial={{ opacity: 0, scale: 0.6, rotate: d.rotate }}
+          // animate={{ opacity: 1, scale: 0.9, rotate: d.rotate }}
+          // transition={{ duration: 0.6, delay: 0.3 + idx * 0.1, ease: 'easeIn' }}
           style={{
-            top: `${d.top}%`,
             transform: `translateX(-39%) rotate(${d.rotate}deg)`,
+            top: (window.innerHeight < window.innerWidth) ? `${d.top}%` : `${d.top + 50}%`, 
           }}
         />
       ))}
@@ -86,9 +90,13 @@ const Home = ({
           src={d.src}
           alt=""
           className="absolute right-0 transform"
+          
+          // initial={{ opacity: 0, scale: 0.6, rotate: d.rotate }}
+          // animate={{ opacity: 1, scale: 0.9, rotate: d.rotate }}
+          // transition={{ duration: 0.6, delay: 0.3 + idx * 0.1, ease: 'easeIn' }}
           style={{
-            top: ((window.innerHeight < window.innerWidth) ? `${d.top}%` : `${d.top+50}%`),
             transform: `translateX(39%) rotate(${d.rotate}deg)`,
+            top: (window.innerHeight < window.innerWidth) ? `${d.top}%` : `${d.top + 50}%`, 
           }}
         />
       ))}
