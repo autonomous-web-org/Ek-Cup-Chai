@@ -69,11 +69,13 @@ function Explore(): JSX.Element {
                 else if (r.format === "gif") type = "gif";
                 return {
                     type,
-                    src: `https://res.cloudinary.com/dboaamz4a/${r.resource_type}/upload/v${r.version}/${r.public_id}.${r.format}`,        // always use the secure_url
+                    src: `https://res.cloudinary.com/${cloudName}/${r.resource_type}/upload/v${r.version}/${r.public_id}.${r.format}`,        // always use the secure_url
                     alt: r.public_id,
                     views: 0,
+                    
                 };
             });
+            
 
             if (cloudItems.length > 0) {
                 setItems(cloudItems);
