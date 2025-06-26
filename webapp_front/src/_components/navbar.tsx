@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { signOut } from "firebase/auth";
 import { Menu as MenuIcon, Globe, Gamepad, QrCode, LogOut } from "lucide-react"; //User
 import { useState, useRef, useEffect } from "react";
+import Profile from "../_components/Profile";
 
 import { auth } from "../_libs/firebase";
 
@@ -40,7 +41,7 @@ const Navbar = () => {
   const items = [
     // { id: "profile", icon: User, to: "/socialize/profile", color: 'text-primary' },
     { id: "explore", icon: Globe, to: "/socialize/explore", color: 'text-primary' },
-    { id: "games",   icon: Gamepad, to: "/socialize/games", color: 'text-primary' },
+    { id: "games", icon: Gamepad, to: "/socialize/games", color: 'text-primary' },
     {
       id: "qr",
       icon: QrCode,
@@ -77,7 +78,10 @@ const Navbar = () => {
           </Link>
         </section>
       ) : (
-        <div className="relative" ref={menuRef}>
+        <div className="flex items-center gap-4" ref={menuRef}>
+          {/* Profile */}
+          {signInData && <Profile />}
+
           {/* Hamburger */}
           <button
             onClick={() => setMenuOpen((o) => !o)}
@@ -88,7 +92,7 @@ const Navbar = () => {
           </button>
 
           {/* Icon‐only menu */}
-          <div className="absolute flex flex-col items-center space-y-6 translate-x-half left-1/2 top-[270%] z-10">
+          <div className="absolute right-0 top-full m-3 p-2 flex flex-col items-end space-y-3 z-10">
             {items.map((item, idx) => {
               const Icon = item.icon;
               const delayMs = idx * 80;
