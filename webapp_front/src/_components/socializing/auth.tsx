@@ -56,7 +56,7 @@ const Auth = () => {
     <div className="flex flex-col items-center h-screen gap-6 text-3xl py-[20vh]">
 
       {/* Heading Text */}
-      <p className="text-3xl text-primary">
+      <p className="text-3xl text-primary text-center px-2">
         Share and explore moments over a cup of chai. ☕
       </p>
 

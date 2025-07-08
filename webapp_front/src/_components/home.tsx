@@ -102,7 +102,7 @@ const Home = ({
       ))}
 
       {/* Hero text */}
-      <em className="text-3xl text-primary text-center z-10 home-page-text" >
+      <em className="text-3xl text-primary text-center z-10 home-page-text font-bold" >
         {
           punchLines[Math.floor(punchLines.length*Math.random())]
         }

@@ -54,7 +54,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="relative flex justify-between items-center w-full h-[10%] p-3 px-6 mx-auto text-primary shadow-md bg-white/80">
+    <nav className="relative flex justify-between items-center w-full h-[10%] p-3 px-6 mx-auto text-primary shadow-md bg-white/80 z-50">
       <h1 className={twMerge("navs", "text-3xl")}>
         <Link to="/" className="flex items-center">
           {/* <img src={ChaiLogo} className="w-[3%]" /> */}
