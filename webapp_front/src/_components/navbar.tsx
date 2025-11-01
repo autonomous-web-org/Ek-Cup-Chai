@@ -71,10 +71,10 @@ const Navbar = () => {
             Customize QR
           </button>
           <Link
-            to={signInData ? "/socialize/explore" : "/socialize"}
+            to={signInData ? "/socialize/explore" : "/get-started"}
             className={twMerge("navs", "text-2xl")}
           >
-            Socialize
+            Get Started
           </Link>
         </section>
       ) : (

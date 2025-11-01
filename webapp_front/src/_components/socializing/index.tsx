@@ -1,4 +1,4 @@
-import Auth from "./auth";
+import Auth from "./Login";
 import Explore from "./explore";
 
 export { Auth, Explore };

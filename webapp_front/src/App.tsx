@@ -44,7 +44,7 @@ const App = () => {
               </>
               :
               <>
-                <Route path="/socialize" element={<Auth />} />
+                <Route path="/get-started" element={<Auth />} />
               </>
             }
             <Route path="/goodbye" element={<Goodbye />} />
