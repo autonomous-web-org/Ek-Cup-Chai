@@ -47,7 +47,7 @@ export default function Auth() {
 
   /* ---------- UI ---------- */
   return (
-    <div className="min-h-screen grid place-content-center bg-[#fefcf8] px-6">
+    <section className="min-h-screen grid place-content-center bg-[#fefcf8] px-6">
       <div className="w-full max-w-sm rounded-2xl bg-white shadow-lg ring-1 ring-black/5 p-8">
         {/* Heading */}
         <h1 className="text-center text-3xl font-bold text-gray-900">Ek Cup Chai</h1>
@@ -120,7 +120,7 @@ export default function Auth() {
           </a>
         </p>
       </div>
-    </div>
+    </section>
   );
 }
 

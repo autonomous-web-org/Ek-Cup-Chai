@@ -10,7 +10,8 @@ import { auth } from './_libs/firebase';
 import RootLayout from "./_components/layouts";
 
 import Home from "./_components/home";
-import { Auth, Explore } from "./_components/socializing";
+import Auth from "./_components/auth";
+import { Explore } from "./_components/socializing";
 import Goodbye from "./_components/goodbye";
 
 import { useAuthDataStore } from "./_stores/user_auth_data";
