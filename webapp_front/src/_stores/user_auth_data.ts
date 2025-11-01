@@ -6,6 +6,7 @@ import type { User } from 'firebase/auth';
 export interface SignInData {
     user?: User;
     _timestamp?: number;
+    email?:string;
 }
 
 // Define the store interface.

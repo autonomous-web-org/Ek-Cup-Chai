@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { signInWithGoogle, storeEmailOnly } from "../../_libs/firebase";
+import { useAuthDataStore } from "../../_stores/user_auth_data";
 
 
 const Auth = () => {
   // Setup navigation (to move to different pages like /home)
   const navigate = useNavigate();
-  
+  const useAuthStore = useAuthDataStore();
+
 
   // State variables
 
@@ -43,10 +44,9 @@ const Auth = () => {
 
     if (success) {
       console.log("✅ Email saved:", email);
+      useAuthStore.setSignInData({ email }); // Set pseudo-auth state for email-only users
       setFormSubmitted(true); // Trigger form animation
-      setTimeout(() => {
-        navigate("explore"); // Navigate after short delay for animation
-      }, 500); // 0.5 second delay
+      navigate("explore"); //navigating to /socialize/explore
     } else {
       console.error("❌ Failed to save email");
     }
@@ -56,7 +56,7 @@ const Auth = () => {
     <div className="flex flex-col items-center h-screen gap-6 text-3xl py-[20vh]">
 
       {/* Heading Text */}
-      <p className="text-3xl text-primary">
+      <p className="text-3xl text-primary text-center px-2">
         Share and explore moments over a cup of chai. ☕
       </p>
 
