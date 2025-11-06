@@ -34,21 +34,16 @@ const App = () => {
 
     return (
         <Routes>
+          {/* Auth route without layout */}
+          <Route path="/get-started" element={<Auth />} />
+          
+          {/* All other routes with RootLayout */}
           <Route element={<RootLayout />}>
             <Route index element={<Home />} />
-            {
-              useAuthStore.signInData
-              ?
-              <>
-                <Route path="/socialize/explore" element={<Explore />} />
-              </>
-              :
-              <>
-                <Route path="/get-started" element={<Auth />} />
-              </>
-            }
+            {useAuthStore.signInData && (
+              <Route path="/socialize/explore" element={<Explore />} />
+            )}
             <Route path="/goodbye" element={<Goodbye />} />
-            {/* <Route path="/qr" element={<><QRCustomize /></>} /> */}
             <Route path="*" element={<div className="grid place-items-center h-full text-3xl">no chai here</div>} />
           </Route>
         </Routes>
