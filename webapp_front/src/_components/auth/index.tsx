@@ -47,6 +47,7 @@ export default function Auth() {
 
   /* ---------- UI ---------- */
   return (
+<<<<<<<< HEAD:webapp_front/src/Login.tsx
     <div className="min-h-screen grid place-content-center bg-[#fefcf8] px-6">
       <div className="w-full max-w-sm rounded-2xl bg-white shadow-lg ring-1 ring-black/5 p-8 relative">
         <Link 
@@ -64,6 +65,10 @@ export default function Auth() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </Link>
+========
+    <section className="min-h-screen grid place-content-center bg-[#fefcf8] px-6">
+      <div className="w-full max-w-sm rounded-2xl bg-white shadow-lg ring-1 ring-black/5 p-8">
+>>>>>>>> cc389685fcb1a5b6b98f7abb9fca2513b0e104df:webapp_front/src/_components/auth/index.tsx
         {/* Heading */}
         <h1 className="text-center text-3xl font-bold text-slate-900">Ek Cup Chai</h1>
         <p className="mt-2 text-center text-sm font-extrabold text-slate-900">Welcome Back</p>
@@ -135,7 +140,7 @@ export default function Auth() {
           </a>
         </p>
       </div>
-    </div>
+    </section>
   );
 }
 
