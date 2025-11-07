@@ -60,11 +60,12 @@ const Home = ({
 
   const punchLines = [
     "More chai, more friends, more fun.",
-    "Let's talk, Share, sip, and grow together over a warm cup of tea."
+    "Let's talk, Share, sip, and grow together over a warm cup of tea.",
+    "For all your Moods and your moody friends here's EK-CUP-CHAI 🍵🫖"
   ]
 
   return (
-    <div className="relative w-full h-screen overflow-hidden flex flex-col items-center gap-6 py-[30vh]">
+    <div className="relative w-full h-screen overflow-hidden flex flex-col items-center gap-6 py-[30vh] select-none">
       {/* Left-side decorations */}
       {decorations.left.map((d, idx) => (
         <img
@@ -102,7 +103,7 @@ const Home = ({
       ))}
 
       {/* Hero text */}
-      <em className="text-3xl text-primary text-center z-10 home-page-text font-bold" >
+      <em className="text-4xl text-primary text-center z-10 home-page-text font-extrabold not-italic" >
         {
           punchLines[Math.floor(punchLines.length*Math.random())]
         }

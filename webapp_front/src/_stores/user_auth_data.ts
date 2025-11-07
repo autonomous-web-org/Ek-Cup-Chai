@@ -7,6 +7,9 @@ export interface SignInData {
     user?: User;
     _timestamp?: number;
     email?:string;
+    displayName?: string | null;
+    photoURL?: string | null;
+    uid?: string | null;
 }
 
 // Define the store interface.
