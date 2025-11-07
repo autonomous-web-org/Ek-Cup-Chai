@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+
 import { signInWithGoogle, storeEmailOnly } from "../../_libs/firebase";
-import { useAuthDataStore } from "./_stores/user_auth_data";
+import { useAuthDataStore } from "../../_stores/user_auth_data";
 
 export default function Auth() {
   const navigate = useNavigate();
